@@ -42,6 +42,7 @@ import { DueTaskNotificationBanner } from './components/DueTaskNotificationBanne
 import { isRohitUser, isNavyaUser, isSpecialUser, isSpecialAstronautUser } from './lib/userTheme.ts';
 import { AppLogo } from './components/AppLogo.tsx';
 import { logoutFirebase } from './lib/firebase.ts';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -810,6 +811,9 @@ export default function App() {
           onFocusTask={(task) => setFocusedTask(task)}
         />
       )}
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
