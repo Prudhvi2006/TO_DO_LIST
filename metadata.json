@@ -1,0 +1,6 @@
+{
+  "name": "TO_DO_LIST",
+  "description": "A production real-time todo, scheduling, and productivity tracking application with PostgreSQL persistence and real-time synchronization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

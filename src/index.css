@@ -1,0 +1,1233 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Patrick+Hand&family=Plus+Jakarta+Sans:ital,wght@0,400..700;1,400..700&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import "tailwindcss";
+
+.font-handwriting {
+  font-family: 'Shantell Sans', 'Patrick Hand', cursive, sans-serif;
+}
+
+.font-cute {
+  font-family: 'Patrick Hand', cursive, sans-serif;
+}
+
+.font-gaegu {
+  font-family: 'Gaegu', cursive, sans-serif;
+}
+
+/* Cute stationery planner styles */
+.bg-planner-cream {
+  background-color: #fffdf9;
+}
+
+.bg-planner-paper {
+  background-color: #fdfaf6;
+  background-image: 
+    radial-gradient(#f3dcd3 0.75px, transparent 0.75px);
+  background-size: 16px 16px;
+}
+
+.bg-planner-lined {
+  background-color: #fffdf9;
+  background-image: linear-gradient(0deg, #fceceb 1px, transparent 1px);
+  background-size: 100% 24px;
+}
+
+.bg-planner-card {
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px -2px rgba(251, 191, 204, 0.22), 0 2px 6px -1px rgba(244, 114, 182, 0.08);
+}
+
+.washi-tape-pink {
+  background: rgba(254, 205, 211, 0.85);
+  box-shadow: 0 1px 3px rgba(244, 114, 182, 0.2);
+  backdrop-filter: blur(2px);
+  position: relative;
+}
+
+.washi-tape-pink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255, 255, 255, 0.35) 5px, rgba(255, 255, 255, 0.35) 10px);
+  pointer-events: none;
+}
+
+.washi-tape-yellow {
+  background: rgba(254, 240, 138, 0.82);
+  box-shadow: 0 1px 3px rgba(234, 179, 8, 0.18);
+  backdrop-filter: blur(2px);
+  position: relative;
+}
+
+.washi-tape-blue {
+  background: rgba(186, 230, 253, 0.82);
+  box-shadow: 0 1px 3px rgba(56, 189, 248, 0.18);
+  backdrop-filter: blur(2px);
+  position: relative;
+}
+
+.washi-tape-lavender {
+  background: rgba(233, 213, 255, 0.82);
+  box-shadow: 0 1px 3px rgba(168, 85, 247, 0.18);
+  backdrop-filter: blur(2px);
+}
+
+.marker-highlight-pink {
+  background: linear-gradient(104deg, rgba(254, 205, 211, 0) 0.9%, rgba(254, 205, 211, 0.7) 2.4%, rgba(254, 205, 211, 0.55) 94%, rgba(254, 205, 211, 0) 98%);
+  border-radius: 4px;
+}
+
+.marker-highlight-yellow {
+  background: linear-gradient(104deg, rgba(254, 240, 138, 0) 0.9%, rgba(254, 240, 138, 0.7) 2.4%, rgba(254, 240, 138, 0.55) 94%, rgba(254, 240, 138, 0) 98%);
+  border-radius: 4px;
+}
+
+.marker-highlight-lavender {
+  background: linear-gradient(104deg, rgba(233, 213, 255, 0) 0.9%, rgba(233, 213, 255, 0.7) 2.4%, rgba(233, 213, 255, 0.55) 94%, rgba(233, 213, 255, 0) 98%);
+  border-radius: 4px;
+}
+
+.marker-highlight-mint {
+  background: linear-gradient(104deg, rgba(187, 247, 208, 0) 0.9%, rgba(187, 247, 208, 0.7) 2.4%, rgba(187, 247, 208, 0.55) 94%, rgba(187, 247, 208, 0) 98%);
+  border-radius: 4px;
+}
+
+:root {
+  --grabient-bg: linear-gradient(225deg, #f7e9f3 0.000%, #e7f3ff 16.667%, #ddfaff 33.333%, #e5fbeb 50.000%, #f5f6dc 66.667%, #fbede0 83.333%, #f0e3f4 100.000%);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bg-custom-grabient {
+  background: linear-gradient(225deg, #f7e9f3 0.000%, #e7f3ff 16.667%, #ddfaff 33.333%, #e5fbeb 50.000%, #f5f6dc 66.667%, #fbede0 83.333%, #f0e3f4 100.000%);
+}
+
+body {
+  background: linear-gradient(225deg, #f7e9f3 0.000%, #e7f3ff 16.667%, #ddfaff 33.333%, #e5fbeb 50.000%, #f5f6dc 66.667%, #fbede0 83.333%, #f0e3f4 100.000%);
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+/* Day/Night Task Done Toggle Button */
+.toggleWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+/* Fixed Sidebar requirement */
+@media (min-width: 768px) {
+  .sidebar-fixed {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 317px !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    z-index: 1000 !important;
+  }
+  .main-content-offset {
+    margin-left: 317px !important;
+  }
+}
+
+/* Rohit Sharma Fan Theme - Scrapbook Background & Utilities */
+.bg-rohit-paper {
+  background-color: #FFFDF7;
+  background-image: 
+    radial-gradient(#8EC5FF 0.75px, transparent 0.75px),
+    radial-gradient(#F4C95D 0.5px, transparent 0.5px);
+  background-size: 24px 24px, 48px 48px;
+  background-position: 0 0, 12px 12px;
+}
+
+.bg-rohit-card {
+  background-color: #ffffff;
+  border: 1.5px solid #8EC5FF;
+  box-shadow: 0 4px 20px -2px rgba(8, 43, 99, 0.08), 0 2px 6px -1px rgba(23, 105, 224, 0.06);
+}
+
+.marker-highlight-blue {
+  background: linear-gradient(104deg, rgba(142, 197, 255, 0) 0.9%, rgba(142, 197, 255, 0.75) 2.4%, rgba(142, 197, 255, 0.6) 94%, rgba(142, 197, 255, 0) 98%);
+  border-radius: 4px;
+}
+
+.marker-highlight-gold {
+  background: linear-gradient(104deg, rgba(244, 201, 93, 0) 0.9%, rgba(244, 201, 93, 0.75) 2.4%, rgba(244, 201, 93, 0.6) 94%, rgba(244, 201, 93, 0) 98%);
+  border-radius: 4px;
+}
+
+.washi-tape-royal {
+  background: rgba(23, 105, 224, 0.88);
+  box-shadow: 0 1px 3px rgba(8, 43, 99, 0.25);
+  backdrop-filter: blur(2px);
+  position: relative;
+}
+
+.washi-tape-gold {
+  background: rgba(244, 201, 93, 0.9);
+  box-shadow: 0 1px 3px rgba(217, 119, 6, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+/* Hitman Card Emojis & Micro Animations */
+@keyframes hitman-pull-shot {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-14deg) scale(0.96);
+  }
+  50% {
+    transform: rotate(20deg) scale(1.12);
+  }
+  75% {
+    transform: rotate(6deg) scale(1.04);
+  }
+}
+
+@keyframes hitman-bat-swing {
+  0%, 100% {
+    transform: rotate(-6deg) translateY(0);
+  }
+  50% {
+    transform: rotate(18deg) translateY(-2px) scale(1.1);
+  }
+}
+
+@keyframes hitman-ball-spin {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(180deg) translateY(-3px) scale(1.08);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0);
+  }
+}
+
+@keyframes hitman-six-burst {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 2px rgba(23, 105, 224, 0.3));
+  }
+  50% {
+    transform: scale(1.22) rotate(-5deg);
+    filter: drop-shadow(0 0 8px rgba(244, 201, 93, 0.9));
+  }
+}
+
+@keyframes hitman-float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(4deg);
+  }
+}
+
+@keyframes hitman-cap-bob {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  30% {
+    transform: rotate(-8deg) translateY(-2px);
+  }
+  70% {
+    transform: rotate(6deg) translateY(-1px);
+  }
+}
+
+@keyframes hitman-electric-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 1px rgba(23, 105, 224, 0.4));
+  }
+  50% {
+    transform: scale(1.14);
+    filter: drop-shadow(0 0 6px rgba(244, 201, 93, 0.85)) drop-shadow(0 0 10px rgba(23, 105, 224, 0.5));
+  }
+}
+
+@keyframes hitman-sparkle-twinkle {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(45deg);
+  }
+}
+
+.animate-hitman-pull {
+  animation: hitman-pull-shot 2.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-hitman-swing {
+  animation: hitman-bat-swing 2s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.animate-hitman-spin {
+  animation: hitman-ball-spin 2.8s linear infinite;
+  transform-origin: center;
+}
+
+.animate-hitman-six {
+  animation: hitman-six-burst 1.8s ease-in-out infinite;
+}
+
+.animate-hitman-float {
+  animation: hitman-float-gentle 2.6s ease-in-out infinite;
+}
+
+.animate-hitman-cap {
+  animation: hitman-cap-bob 2.2s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.animate-hitman-electric {
+  animation: hitman-electric-pulse 1.6s ease-in-out infinite;
+}
+
+.animate-hitman-twinkle {
+  animation: hitman-sparkle-twinkle 1.4s ease-in-out infinite;
+}
+
+
+
+.toggleWrapper .input {
+  position: absolute;
+  left: -99em;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  width: 90px;
+  height: 50px;
+  background-color: #83d8ff;
+  border-radius: 84px;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+  will-change: background-color;
+}
+
+.toggle:before {
+  content: "AM";
+  position: absolute;
+  left: -50px;
+  top: 15px;
+  font-size: 18px;
+  color: #749ed7;
+}
+
+.toggle:after {
+  content: "PM";
+  position: absolute;
+  right: -48px;
+  top: 15px;
+  font-size: 18px;
+}
+
+/* In task cards, hide the external AM/PM text so it fits inline seamlessly */
+.task-toggle-wrapper .toggle:before,
+.task-toggle-wrapper .toggle:after {
+  display: none !important;
+}
+
+.toggle__handler {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  top: 3px;
+  left: 3px;
+  width: 44px;
+  height: 44px;
+  background-color: #ffcf96;
+  border-radius: 50px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 400ms cubic-bezier(0.34, 1.3, 0.64, 1);
+  transform: rotate(-45deg);
+  will-change: transform, background-color;
+}
+
+.toggle__handler .crater {
+  position: absolute;
+  background-color: #e8cda5;
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  border-radius: 100%;
+}
+
+.toggle__handler .crater--1 {
+  top: 18px;
+  left: 10px;
+  width: 4px;
+  height: 4px;
+}
+
+.toggle__handler .crater--2 {
+  top: 28px;
+  left: 22px;
+  width: 6px;
+  height: 6px;
+}
+
+.toggle__handler .crater--3 {
+  top: 10px;
+  left: 25px;
+  width: 8px;
+  height: 8px;
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  transition: all 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  border-radius: 50%;
+}
+
+.star--1 {
+  top: 10px;
+  left: 35px;
+  z-index: 0;
+  width: 30px;
+  height: 3px;
+}
+
+.star--2 {
+  top: 18px;
+  left: 28px;
+  z-index: 1;
+  width: 30px;
+  height: 3px;
+}
+
+.star--3 {
+  top: 27px;
+  left: 40px;
+  z-index: 0;
+  width: 30px;
+  height: 3px;
+}
+
+.star--4,
+.star--5,
+.star--6 {
+  opacity: 0;
+  transition: all 300ms 0 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.star--4 {
+  top: 16px;
+  left: 11px;
+  z-index: 0;
+  width: 2px;
+  height: 2px;
+  transform: translate3d(3px, 0, 0);
+}
+
+.star--5 {
+  top: 32px;
+  left: 17px;
+  z-index: 0;
+  width: 3px;
+  height: 3px;
+  transform: translate3d(3px, 0, 0);
+}
+
+.star--6 {
+  top: 36px;
+  left: 28px;
+  z-index: 0;
+  width: 2px;
+  height: 2px;
+  transform: translate3d(3px, 0, 0);
+}
+
+.input:checked + .toggle {
+  background-color: #749dd6;
+}
+
+.input:checked + .toggle:before {
+  color: #fff;
+}
+
+.input:checked + .toggle:after {
+  color: #749ed7;
+}
+
+.input:checked + .toggle .toggle__handler {
+  background-color: #ffe5b5;
+  transform: translate3d(40px, 0, 0) rotate(0);
+}
+
+.input:checked + .toggle .toggle__handler .crater {
+  opacity: 1;
+}
+
+.input:checked + .toggle .star--1 {
+  width: 2px;
+  height: 2px;
+}
+
+.input:checked + .toggle .star--2 {
+  width: 4px;
+  height: 4px;
+  transform: translate3d(-5px, 0, 0);
+}
+
+.input:checked + .toggle .star--3 {
+  width: 2px;
+  height: 2px;
+  transform: translate3d(-7px, 0, 0);
+}
+
+.input:checked + .toggle .star--4,
+.input:checked + .toggle .star--5,
+.input:checked + .toggle .star--6 {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.input:checked + .toggle .star--4 {
+  transition: all 300ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.input:checked + .toggle .star--5 {
+  transition: all 300ms 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.input:checked + .toggle .star--6 {
+  transition: all 300ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.input:disabled + .toggle {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   CYBERPUNK NEON SPINNER (SUPER FAST LOAD & LOGIN)
+   ============================================================ */
+.spinner {
+  background-image: linear-gradient(rgb(186, 66, 255) 35%, rgb(0, 225, 255));
+  width: 100px;
+  height: 100px;
+  animation: spinning82341 1.7s linear infinite;
+  text-align: center;
+  border-radius: 50px;
+  filter: blur(1px);
+  box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+}
+
+.spinner1 {
+  background-color: rgb(36, 36, 36);
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  filter: blur(10px);
+}
+
+@keyframes spinning82341 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   PODA CYBERNETIC SEARCH BAR (PERFECTED & RESPONSIVE)
+   ============================================================ */
+.poda-search-wrapper {
+  position: relative;
+  overflow: visible;
+  padding: 4px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ============================================================
+   ROTATING NEON CYBER CARD EFFECT (CREATE TASK CARD)
+   ============================================================ */
+.cyber-card {
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(240, 15%, 9%);
+  --paragraph: hsl(0, 0%, 83%);
+  --line: hsl(240, 9%, 17%);
+  --primary: hsl(189, 92%, 58%);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: hsla(240, 15%, 9%, 1);
+  background-image: radial-gradient(
+      at 88% 40%,
+      hsla(240, 15%, 9%, 1) 0px,
+      transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsl(189, 97%, 36%) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsl(188, 94%, 13%) 0px, transparent 85%);
+
+  border-radius: 1.25rem;
+  box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.2) inset, 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.cyber-card .card__border {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background-image: linear-gradient(
+    0deg,
+    hsl(0, 0%, 100%) -50%,
+    hsl(0, 0%, 40%) 100%
+  );
+  border-radius: 1.25rem;
+}
+
+.cyber-card .card__border::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  width: 250%;
+  height: 250%;
+  background-image: linear-gradient(
+    0deg,
+    hsla(0, 0%, 100%, 0) 0%,
+    hsl(189, 100%, 50%) 40%,
+    hsl(189, 100%, 50%) 60%,
+    hsla(0, 0%, 40%, 0) 100%
+  );
+  animation: rotateCyberCardBorder 8s linear infinite;
+}
+
+@keyframes rotateCyberCardBorder {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Cyber Title Input for Task Modal (Image 2 effect) */
+.cyber-input-field {
+  position: relative;
+  background-color: #07090e;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 15px -3px rgba(56, 189, 248, 0.15);
+}
+
+.cyber-input-field:focus-within {
+  border-color: hsl(189, 92%, 58%);
+  box-shadow: 0 0 20px 2px rgba(56, 189, 248, 0.35), inset 0 0 10px rgba(56, 189, 248, 0.15);
+}
+
+/* User exact card style classes */
+.card-success-guide {
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(240, 15%, 9%);
+  --paragraph: hsl(0, 0%, 83%);
+  --line: hsl(240, 9%, 17%);
+  --primary: hsl(189, 92%, 58%);
+}
+
+.card_title__container .card_title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+}
+
+.card_title__container .card_paragraph {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: hsl(0, 0%, 83%);
+}
+
+.card .line,
+.cyber-card .line {
+  width: 100%;
+  height: 0.1rem;
+  background-color: hsl(240, 9%, 17%);
+  border: none;
+}
+
+.card__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card__list_item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card__list_item .check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-color: hsl(189, 92%, 58%);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.card__list_item .check .check_svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  fill: hsl(240, 15%, 9%);
+}
+
+.card__list_item .list_text {
+  font-size: 0.8rem;
+  color: hsl(0, 0%, 100%);
+}
+
+.cyber-button {
+  cursor: pointer;
+  padding: 0.65rem 1.25rem;
+  width: 100%;
+  background-image: linear-gradient(
+    0deg,
+    hsl(189, 92%, 58%),
+    hsl(189, 99%, 26%) 100%
+  );
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: hsl(0, 0%, 100%);
+  border: 0;
+  border-radius: 9999px;
+  box-shadow: inset 0 -2px 25px -4px hsl(0, 0%, 100%);
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.cyber-button:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.cyber-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   Pastel Transparent Login Page (Exact User Style)
+   ========================================= */
+.pastel-auth-screen {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #e8f4fc 0%, #f5f0ff 45%, #fff2ea 100%);
+}
+
+.pastel-auth-screen::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(16, 137, 211, 0.18) 0%, rgba(18, 177, 209, 0.08) 40%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.pastel-auth-screen::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  right: 20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(254, 205, 211, 0.35) 0%, rgba(254, 240, 138, 0.2) 50%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+/* User exact container with transparent glass pastel effect */
+.pastel-login-container {
+  max-width: 360px;
+  width: 100%;
+  background: #f8f9fd;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(244, 247, 251, 0.94) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 40px;
+  padding: 30px 35px;
+  border: 5px solid rgba(255, 255, 255, 0.92);
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
+  margin: 20px auto;
+  position: relative;
+  z-index: 10;
+}
+
+.pastel-heading {
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+  color: rgb(16, 137, 211);
+  letter-spacing: -0.5px;
+}
+
+.pastel-form {
+  margin-top: 20px;
+}
+
+.pastel-input {
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+  margin-top: 15px;
+  box-shadow: #cff0ff 0px 10px 10px -5px;
+  border-inline: 2px solid transparent;
+  color: #1e293b;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.pastel-input::-moz-placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.pastel-input::placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.pastel-input:focus {
+  outline: none;
+  border-inline: 2px solid #12b1d1;
+}
+
+.pastel-forgot-password {
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.pastel-forgot-password button,
+.pastel-forgot-password a {
+  font-size: 11px;
+  color: #0099ff;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.pastel-forgot-password button:hover,
+.pastel-forgot-password a:hover {
+  color: #12b1d1;
+  text-decoration: underline;
+}
+
+.pastel-login-button {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(
+    45deg,
+    rgb(16, 137, 211) 0%,
+    rgb(18, 177, 209) 100%
+  );
+  color: white;
+  padding-block: 15px;
+  margin: 20px auto 12px;
+  border-radius: 20px;
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pastel-login-button:hover:not(:disabled) {
+  transform: scale(1.03);
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px;
+}
+
+.pastel-login-button:active:not(:disabled) {
+  transform: scale(0.95);
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
+}
+
+.pastel-login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pastel-agreement {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.pastel-agreement button,
+.pastel-agreement a {
+  text-decoration: none;
+  color: #0099ff;
+  font-size: 9.5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.pastel-agreement button:hover,
+.pastel-agreement a:hover {
+  color: #12b1d1;
+  text-decoration: underline;
+}
+
+/* =========================================
+   AUTHENTIC ROTATING NEON CYBER CARD EFFECT
+   (Applied to the 4 Dashboard Metric Cards)
+   ========================================= */
+.cyber-metric-card {
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(240, 15%, 9%);
+  --paragraph: hsl(0, 0%, 83%);
+  --line: hsl(240, 9%, 17%);
+  --primary: hsl(189, 92%, 58%);
+
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  padding: 2px;
+  background: transparent;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4), 0 0 15px rgba(18, 177, 209, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.cyber-metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.5), 0 0 24px rgba(18, 177, 209, 0.35);
+}
+
+.cyber-metric-card .card__border {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  pointer-events: none;
+  z-index: 0;
+  contain: paint;
+}
+
+.cyber-metric-card .card__border::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 180deg,
+    rgba(18, 177, 209, 0.3) 230deg,
+    rgba(18, 177, 209, 0.9) 280deg,
+    #00f0ff 315deg,
+    #ffffff 335deg,
+    #00f0ff 350deg,
+    transparent 360deg
+  );
+  animation: rotateCyberMetricBorder 6s linear infinite;
+  will-change: transform;
+}
+
+@keyframes rotateCyberMetricBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cyber-metric-card .card__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(1.25rem - 2px);
+  padding: 1.15rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: hsla(240, 15%, 9%, 1);
+  background-image: radial-gradient(
+      at 88% 40%,
+      hsla(240, 15%, 9%, 1) 0px,
+      transparent 85%
+    ),
+    radial-gradient(at 49% 30%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 14% 26%, hsla(240, 15%, 9%, 1) 0px, transparent 85%),
+    radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%),
+    radial-gradient(at 41% 94%, hsl(189, 97%, 36%) 0px, transparent 85%),
+    radial-gradient(at 100% 99%, hsl(188, 94%, 13%) 0px, transparent 85%);
+  box-shadow: 0px -14px 20px 0px rgba(255, 255, 255, 0.16) inset;
+}
+
+@media (max-width: 640px) {
+  .cyber-metric-card .card__content {
+    padding: 0.85rem 0.9rem;
+  }
+}
+
+/* ============================================================
+   ASTRONAUT TASK COMPLETION CARD & CELESTIAL CELEBRATION
+   ============================================================ */
+.astronaut-card {
+  position: relative;
+  width: 21em;
+  max-width: 92vw;
+  min-height: 25.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #111115;
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  padding: 1.5em 1.6em;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 1;
+  row-gap: 1em;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 45px rgba(155, 64, 252, 0.35);
+  transform: translateZ(0);
+}
+
+.astronaut-card img.image {
+  width: 8.5em;
+  margin-right: 0.4em;
+  animation: move 10s ease-in-out infinite;
+  z-index: 5;
+  user-select: none;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+  will-change: transform;
+}
+
+.astronaut-card .image:hover {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.astronaut-card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: -3px;
+  border-radius: 10px;
+  background: radial-gradient(#858585, transparent, transparent);
+  transform: translate(-5px, 250px);
+  transition: 0.4s ease-in-out;
+  z-index: -1;
+}
+
+.astronaut-card:hover::before {
+  width: 150%;
+  height: 100%;
+  margin-left: -4.25em;
+}
+
+.astronaut-card::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 20px;
+  background: rgba(17, 17, 21, 0.9);
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+}
+
+.astronaut-card .heading {
+  z-index: 10;
+  transition: 0.4s ease-in-out;
+  text-align: center;
+}
+
+.astronaut-card:hover .heading {
+  letter-spacing: 0.025em;
+}
+
+.astronaut-card .heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  opacity: 1;
+  box-shadow: 220px 118px #fff, 280px 176px #fff, 40px 50px #fff,
+    60px 180px #fff, 120px 130px #fff, 180px 176px #fff, 220px 290px #fff,
+    520px 250px #fff, 400px 220px #fff, 50px 350px #fff, 10px 230px #fff,
+    140px 20px #fff, 425px 20px #fff, 70px 120px #fff, 20px 130px #fff,
+    110px 80px #fff, 280px 80px #fff, 250px 350px #fff, 280px 230px #fff,
+    220px 190px #fff, 450px 100px #fff, 380px 80px #fff, 520px 50px #fff;
+  z-index: -1;
+  transition: 1s ease;
+  animation: 1s glowing-stars linear alternate infinite;
+  animation-delay: 0s;
+}
+
+.astronaut-card:hover .heading::before {
+  filter: blur(3px);
+}
+
+.astronaut-card .image:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.astronaut-card .image:active + .heading::before {
+  box-shadow: 240px 20px #9b40fc, 240px 25px #9b40fc, 240px 30px #9b40fc,
+    240px 35px #9b40fc, 240px 40px #9b40fc, 242px 45px #9b40fc,
+    246px 48px #9b40fc, 251px 49px #9b40fc, 256px 48px #9b40fc,
+    260px 45px #9b40fc, 262px 40px #9b40fc;
+  animation: none;
+  filter: blur(0);
+  border-radius: 2px;
+  width: 0.45em;
+  height: 0.45em;
+  scale: 0.65;
+  transform: translateX(9em) translateY(1em);
+}
+
+.astronaut-card .heading::after {
+  content: "";
+  top: -2.5em;
+  left: -2.5em;
+  position: absolute;
+  width: 6.8em;
+  height: 6.8em;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background: #f9f9fb;
+  box-shadow: 0px 0px 60px rgba(193, 119, 241, 0.75),
+    0px 0px 60px rgba(135, 42, 211, 0.75), inset #9b40fc 0px 0px 35px -10px;
+  transition: 0.4s ease-in-out;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.astronaut-card:hover .heading::after {
+  box-shadow: 0px 0px 90px rgba(193, 119, 241, 0.95),
+    0px 0px 90px rgba(135, 42, 211, 0.95), inset #9b40fc 0px 0px 35px -10px;
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-55em) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(-70em) translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0em) translateY(0em);
+  }
+  25% {
+    transform: translateY(-1em) translateX(-1em);
+    rotate: -10deg;
+  }
+  50% {
+    transform: translateY(1em) translateX(-1em);
+  }
+  75% {
+    transform: translateY(-1.25em) translateX(1em);
+    rotate: 10deg;
+  }
+  100% {
+    transform: translateX(0em) translateY(0em);
+  }
+}
+
+@keyframes glowing-stars {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+
